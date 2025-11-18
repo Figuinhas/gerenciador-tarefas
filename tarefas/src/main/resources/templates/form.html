@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nova Tarefa</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Salvar Tarefa</h2>
+        <form th:action="@{/salvar}" th:object="${tarefa}" method="post">
+            <input type="hidden" th:field="*{id}">
+            
+            <label>Título</label>
+            <input type="text" th:field="*{titulo}" required>
+            
+            <label>Descrição</label>
+            <textarea th:field="*{descricao}"></textarea>
+            
+            <label>
+                <input type="checkbox" th:field="*{concluida}"> Concluída?
+            </label>
+            
+            <button type="submit">Salvar</button>
+            <a href="/">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

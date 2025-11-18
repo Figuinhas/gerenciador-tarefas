@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Minhas Tarefas</h1>
+        <a href="/nova" class="btn-novo">Nova Tarefa</a>
+        
+        <ul class="lista">
+            <li th:each="item : ${tarefas}" th:classappend="${item.concluida} ? 'concluida' : ''">
+                <span th:text="${item.titulo}">Título</span>
+                <div>
+                    <a th:href="@{/editar/{id}(id=${item.id})}">Editar</a>
+                    <a th:href="@{/deletar/{id}(id=${item.id})}" class="btn-delete">X</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

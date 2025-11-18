@@ -1,4 +1,4 @@
-package com.gerenciador.tarefas;
+package com.gerenciador.tarefas.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
