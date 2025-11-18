@@ -14,35 +14,35 @@ public class TarefaController {
     @Autowired
     private TarefaRepository repository;
 
-    // Listar tarefas na Home
+    // listar tarefas na Home
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("tarefas", repository.findAll());
         return "index";
     }
 
-    // Abrir formulário de nova tarefa
+    // abrir formulário de nova tarefa
     @GetMapping("/nova")
     public String formCadastro(Model model) {
         model.addAttribute("tarefa", new Tarefa());
         return "form";
     }
 
-    // Salvar tarefa (nova ou edição)
+    // salvar tarefa (nova ou edição)
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute Tarefa tarefa) {
         repository.save(tarefa);
         return "redirect:/";
     }
 
-    // Abrir formulário de edição
+    // abrir formulário de edição
     @GetMapping("/editar/{id}")
     public String formEdicao(@PathVariable Long id, Model model) {
         model.addAttribute("tarefa", repository.findById(id).get());
         return "form";
     }
 
-    // Deletar tarefa
+    // deletar tarefa
     @GetMapping("/deletar/{id}")
     public String deletar(@PathVariable Long id) {
         repository.deleteById(id);
